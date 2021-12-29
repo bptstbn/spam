@@ -231,10 +231,3 @@ response.json()
 
 
     [['not spam']]
-
-
-
-
-```python
-
-```
