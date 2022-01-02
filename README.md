@@ -4,6 +4,17 @@
 #### Maxime Boutin
 #### Baptiste Bony
 
+## The goal of this project
+The aim of the project is to create a model which takes 57 quantitative variables extracted from an e-mail as input and predicts whether the e-mail is a spam or not. 
+
+## Stages of the Project 
+- Create the Dataframe
+- Clean and scale the data 
+- Select the best features
+- Visualize and analyze the data
+- Test different models of prediction
+
+## First look at the dataset
 ```python
 names = ['w_freq_make', 'w_freq_adress', 'w_freq_all', 'w_freq_3d', 'w_freq_our', 'w_freq_over', 'w_freq_remove',
          'w_freq_internet', 'w_freq_order', 'w_freq_mail', 'w_freq_receive', 'w_freq_will', 'w_freq_people',
@@ -15,15 +26,7 @@ names = ['w_freq_make', 'w_freq_adress', 'w_freq_all', 'w_freq_3d', 'w_freq_our'
          'c_freq_;', 'c_freq_(', 'c_freq_[', 'c_freq_!', 'c_freq_$', 'c_freq_#',
          'capital_run_length_average', 'capital_run_length_longest', 'capital_run_length_total', 'Is_Spam']
 ```
-## The goal of this project
-The aim of the project is to create a model which takes 57 quantitative variables extracted from an e-mail as input and predicts whether the e-mail is a spam or not. 
 
-## Stages of the Project 
-- Create the Dataframe
-- Clean and scale the data 
-- Select the best features
-- Visualize and analyze the data
-- Test different models of prediction
 
 ```python
 import pandas as pd
