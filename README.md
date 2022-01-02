@@ -7,7 +7,7 @@
 ## The goal of this project
 The aim of the project is to create a model which takes 57 quantitative variables extracted from an e-mail as input and predicts whether the e-mail is a spam or not. 
 
-## Stages of the Project 
+## Stages of the project 
 - Create the Dataframe
 - Clean and scale the data 
 - Select the best features
