@@ -195,6 +195,153 @@ df.head()
 <p>5 rows × 58 columns</p>
 </div>
 
+## Adopted model
+The model we have chosen after comparison is a deep learning model.
+
+Firstly, we create a scaling function.
+
+
+```python
+from sklearn.preprocessing import StandardScaler
+```
+
+
+```python
+def scale(data, scaler = StandardScaler()):
+    scaler.fit(data)
+    return scaler.transform(data)
+```
+
+
+```python
+import numpy as np
+```
+
+
+```python
+x = np.array(df.drop('Is_Spam', axis = 1))
+y = np.array(df['Is_Spam'])
+```
+
+Then, we split the dataset into a training set and a test set.
+
+
+```python
+from sklearn.model_selection import train_test_split
+```
+
+
+```python
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.33)
+```
+
+Next, we scale the data.
+
+
+```python
+x_train = scale(x_train)
+x_test = scale(x_test)
+```
+
+Then, we create and compile our model.
+
+
+```python
+from keras import Sequential
+from keras.layers import Dense
+```
+
+
+```python
+model = Sequential([Dense(64, input_dim = x_train.shape[1], activation = 'relu'), 
+                    Dense(1, activation = 'sigmoid')])
+model.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
+```
+
+Finally, we train our model.
+
+
+```python
+model.fit(x_train, y_train, epochs = 20)
+```
+
+    Epoch 1/20
+    97/97 [==============================] - 1s 2ms/step - loss: 0.4295 - accuracy: 0.8462
+    Epoch 2/20
+    97/97 [==============================] - 0s 3ms/step - loss: 0.2521 - accuracy: 0.9179
+    Epoch 3/20
+    97/97 [==============================] - 0s 3ms/step - loss: 0.2120 - accuracy: 0.9293
+    Epoch 4/20
+    97/97 [==============================] - 0s 2ms/step - loss: 0.1906 - accuracy: 0.9335
+    Epoch 5/20
+    97/97 [==============================] - 0s 3ms/step - loss: 0.1753 - accuracy: 0.9393
+    Epoch 6/20
+    97/97 [==============================] - 0s 2ms/step - loss: 0.1660 - accuracy: 0.9390
+    Epoch 7/20
+    97/97 [==============================] - 0s 2ms/step - loss: 0.1573 - accuracy: 0.9439
+    Epoch 8/20
+    97/97 [==============================] - 0s 3ms/step - loss: 0.1508 - accuracy: 0.9448: 0s - loss: 0.1498 - accuracy: 0.94
+    Epoch 9/20
+    97/97 [==============================] - 0s 3ms/step - loss: 0.1462 - accuracy: 0.9465
+    Epoch 10/20
+    97/97 [==============================] - 0s 2ms/step - loss: 0.1423 - accuracy: 0.9458
+    Epoch 11/20
+    97/97 [==============================] - 0s 2ms/step - loss: 0.1377 - accuracy: 0.9478
+    Epoch 12/20
+    97/97 [==============================] - 0s 3ms/step - loss: 0.1342 - accuracy: 0.9474
+    Epoch 13/20
+    97/97 [==============================] - 0s 2ms/step - loss: 0.1308 - accuracy: 0.9500
+    Epoch 14/20
+    97/97 [==============================] - 0s 2ms/step - loss: 0.1271 - accuracy: 0.9523
+    Epoch 15/20
+    97/97 [==============================] - 0s 2ms/step - loss: 0.1245 - accuracy: 0.9543
+    Epoch 16/20
+    97/97 [==============================] - 0s 3ms/step - loss: 0.1218 - accuracy: 0.9559
+    Epoch 17/20
+    97/97 [==============================] - 0s 3ms/step - loss: 0.1187 - accuracy: 0.9572
+    Epoch 18/20
+    97/97 [==============================] - 0s 3ms/step - loss: 0.1163 - accuracy: 0.9578
+    Epoch 19/20
+    97/97 [==============================] - 0s 3ms/step - loss: 0.1144 - accuracy: 0.9591
+    Epoch 20/20
+    97/97 [==============================] - 0s 3ms/step - loss: 0.1111 - accuracy: 0.9594
+    
+
+
+
+
+    <keras.callbacks.History at 0x21c7e28e250>
+
+
+
+We can now predict the labels of the test set.
+
+
+```python
+y_proba = model.predict(x_test)
+y_pred = np.where(y_proba < 0.5, 0, 1)
+```
+
+And we can calculate the accuracy of the model.
+
+
+```python
+from sklearn.metrics import accuracy_score
+```
+
+
+```python
+accuracy_score(y_test, y_pred)
+```
+
+
+
+
+    0.9420671494404214
+
+
+
+
 ## How to use the API
 The API is up and running at https://apispam.herokuapp.com.
 
