@@ -3,7 +3,7 @@
 #### Maxime Boutin
 #### Baptiste Bony
 
-The aim of the project is to create a model which takes 47 quantitative variables extracted from an e-mail as input and predicts whether the e-mail is a spam or not. 
+The aim of the project is to create a model which takes 57 quantitative variables extracted from an e-mail as input and predicts whether the e-mail is a spam or not. 
 
 
 ```python
@@ -17,7 +17,15 @@ names = ['w_freq_make', 'w_freq_adress', 'w_freq_all', 'w_freq_3d', 'w_freq_our'
          'c_freq_;', 'c_freq_(', 'c_freq_[', 'c_freq_!', 'c_freq_$', 'c_freq_#',
          'capital_run_length_average', 'capital_run_length_longest', 'capital_run_length_total', 'Is_Spam']
 ```
+## The goal of this project
+This dataset allow us to determine whether if a mail is a spam or not. It is usefull in our everyday life, since we receive many e-mails every day. 
 
+## Stages of the Project 
+- Creation of the Dataframe
+- Cleaning and scaling the data 
+- Selection of the features
+- Visualizing and analyzing the data
+- Test different models of prediction
 
 ```python
 import pandas as pd
@@ -185,7 +193,6 @@ df.head()
 </table>
 <p>5 rows × 58 columns</p>
 </div>
-
 
 
 The API is up and running at https://apispam.herokuapp.com.
