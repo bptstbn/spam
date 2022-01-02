@@ -8,11 +8,11 @@ import numpy as np
 #create an instance of Flask
 app = Flask(__name__)
 
-
+# load pretrained model & transformer
 model = keras.models.load_model('assets/model.h5')
 transformer = joblib.load('assets/transformer.joblib')
 
-
+# create the unique route
 @app.route('/', methods=['GET', 'POST'])
 def predict():
     string = request.args.get('input')
@@ -20,7 +20,6 @@ def predict():
     probabilities = model.predict(transformer.transform(data))
     predictions = np.where(probabilities > 0.5, 'spam', 'not spam')
     return jsonify(predictions.tolist())
-
 
 if __name__ == '__main__':
     app.run(debug=True)
