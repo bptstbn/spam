@@ -344,7 +344,9 @@ accuracy_score(y_test, y_pred)
 
 ## How to use the API
 The API is up and running at https://apispam.herokuapp.com.
+
 It is perfectly normal that an error is displayed when you go directly to the API address in your browser. Indeed, the app is only intended to receive requests with an input parameter, namely the features of the e-mail to be classified, and return the prediction of the model.
+
 Here is an example of how you can call the API in python. Theoritically, it should work with any other programming language.
 
 
