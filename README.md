@@ -359,6 +359,7 @@ import requests
 link = 'https://apispam.herokuapp.com'
 ```
 
+Let's predict the class of the first e-mail of the dataset.
 
 ```python
 obj = df.iloc[[0]].drop('Is_Spam', axis = 1)
@@ -374,6 +375,8 @@ response.json()
     [['spam']]
 
 
+
+Let's do the same for the last e-mail of the dataset.
 
 
 ```python
