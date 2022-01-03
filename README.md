@@ -345,11 +345,13 @@ accuracy_score(y_test, y_pred)
 ## How to use the API
 The API is up and running at https://apispam.herokuapp.com.
 
-It is perfectly normal that an error is displayed when you go directly to the API address in your browser. Indeed, the app is only intended to receive requests with an input parameter and return the prediction of the model.
-
 Here is are some examples of how you can call the API in python. Theoritically, it should work with any other programming language.
 
 ### Prediction features
+You can predict whether an email is spam or not by giving its features in a particular format.
+
+To do so, use the address https://apispam.herokuapp.com/features.
+
 In this case, the input parameter of the query is a dictionnary which contains a string dictionnary of the features of the e-mail to be classified.
 
 ```python
@@ -398,13 +400,13 @@ response.json()
 ### Prediction from raw text
 You can also predict whether an email is spam or not directly from its raw text.
 
-In this case, the input parameter of the query is a dictionnary containing a simple string of the email raw text. 
-
 To do so, use the address https://apispam.herokuapp.com/fromtext.
+
+In this case, the input parameter of the query is a dictionnary containing a simple string of the email raw text. 
 
 
 ```python
-link = 'https://apispam.herokuapp.com/fromtext'
+link = 'https://apispam.herokuapp.com/text'
 ```
 
 
