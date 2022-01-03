@@ -345,10 +345,12 @@ accuracy_score(y_test, y_pred)
 ## How to use the API
 The API is up and running at https://apispam.herokuapp.com.
 
-It is perfectly normal that an error is displayed when you go directly to the API address in your browser. Indeed, the app is only intended to receive requests with an input parameter, namely the features of the e-mail to be classified, and return the prediction of the model.
+It is perfectly normal that an error is displayed when you go directly to the API address in your browser. Indeed, the app is only intended to receive requests with an input parameter and return the prediction of the model.
 
-Here is an example of how you can call the API in python. Theoritically, it should work with any other programming language.
+Here is are some examples of how you can call the API in python. Theoritically, it should work with any other programming language.
 
+### Prediction from raw text
+In this case, the input parameter of the query is a dictionnary which contains a string dictionnary of the features of the e-mail to be classified.
 
 ```python
 import requests
@@ -391,3 +393,56 @@ response.json()
 
 
     [['not spam']]
+
+
+### Prediction from raw text
+You can also predict whether an email is spam or not directly from its raw text.
+
+In this case, the input parameter of the query is a dictionnary containing a simple string of the email raw text. 
+
+To do so, use the address https://apispam.herokuapp.com/fromtext.
+
+
+```python
+link = 'https://apispam.herokuapp.com/fromtext'
+```
+
+
+```python
+email = "LAST CHANCE : START 2022 WITH 70% ON EVERY ARTICLE !Don't wait !!! Sign in to your account by cliking ON THIS LINK ### !!!"
+```
+
+
+```python
+query = dict({"input":email})
+response = requests.get(link, params = query)
+response.json()
+```
+
+
+
+
+    [['spam']]
+
+
+
+Let's try with another email.
+
+
+```python
+email = "Dear Mr. Johnson, I hope all is well. I had fun meeting you and designing our Career Focused Project together on Tuesday. I know we agreed that I would make a PowerPoint presentation, but I don't have any way to save my work after each session. Could you please bring a jump drive to next session? If you can't, I will ask Ms. Johnson for one tomorrow. I am also interested in learning the importance of teamwork at your job. What do you think makes someone an effective team player in the workforce? What type of team assignments do you normally work on? Do you prefer working in teams or on your own? Thank you for taking the time to answer my questions and I look forward to hearing from you. Sincerely, Derrick Smith"
+```
+
+
+```python
+query = dict({"input":email})
+response = requests.get(link, params = query)
+response.json()
+```
+
+
+
+
+    [['not spam']]
+
+
