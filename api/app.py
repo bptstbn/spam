@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from tensorflow import keras
 import joblib
 import json
@@ -16,9 +16,14 @@ model = keras.models.load_model('assets/model.h5')
 transformer = joblib.load('assets/transformer.joblib')
 
 
-# create the first route
-# prediction from features
+# create the default route
 @app.route('/', methods=['GET', 'POST'])
+def home():
+    return render_template('index.html')
+
+
+# create the route that enables prediction from features
+@app.route('/fromfeatures', methods=['GET', 'POST'])
 def predict():
     string = request.args.get('input')
     data = pd.DataFrame.from_dict(json.loads(string))
@@ -27,8 +32,7 @@ def predict():
     return jsonify(predictions.tolist())
 
 
-# create the second route
-# prediction from raw email text
+# create the route that enables prediction from raw text
 @app.route('/fromtext', methods=['GET', 'POST'])
 def predictfromtext():
     email = request.args.get('input')
