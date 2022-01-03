@@ -352,7 +352,7 @@ Here is are some examples of how you can call the API in python. Theoritically, 
 ### Prediction features
 You can predict whether an email is spam or not by giving its features in a particular format.
 
-To do so, use the address https://apispam.herokuapp.com/fromfeatures.
+To do so, use the address https://apispam.herokuapp.com/features.
 
 In this case, the input parameter of the query is a dictionnary which contains a string dictionnary of the features of the e-mail to be classified.
 
@@ -408,7 +408,7 @@ In this case, the input parameter of the query is a dictionnary containing a sim
 
 
 ```python
-link = 'https://apispam.herokuapp.com/fromtext'
+link = 'https://apispam.herokuapp.com/text'
 ```
 
 
