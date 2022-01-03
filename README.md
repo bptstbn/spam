@@ -400,7 +400,7 @@ response.json()
 ### Prediction from raw text
 You can also predict whether an email is spam or not directly from its raw text.
 
-To do so, use the address https://apispam.herokuapp.com/fromtext.
+To do so, use the address https://apispam.herokuapp.com/text.
 
 In this case, the input parameter of the query is a dictionnary containing a simple string of the email raw text. 
 
