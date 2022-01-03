@@ -349,7 +349,7 @@ It is perfectly normal that an error is displayed when you go directly to the AP
 
 Here is are some examples of how you can call the API in python. Theoritically, it should work with any other programming language.
 
-### Prediction from raw text
+### Prediction features
 In this case, the input parameter of the query is a dictionnary which contains a string dictionnary of the features of the e-mail to be classified.
 
 ```python
