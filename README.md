@@ -1,8 +1,8 @@
 # Python for Data Analysis Project
 
 ## Contributors
-- Maxime Boutin
-- Baptiste Bony
+- Maxime BOUTIN
+- Baptiste BONY
 
 ## The goal of this project
 The aim of the project is to create a model which takes 57 quantitative variables extracted from an e-mail as input and predicts whether the e-mail is a spam or not. 
