@@ -360,7 +360,7 @@ import requests
 
 
 ```python
-link = 'https://apispam.herokuapp.com'
+link = 'https://apispam.herokuapp/features.com'
 ```
 
 Let's predict the class of the first e-mail of the dataset.
